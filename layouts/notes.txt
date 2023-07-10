@@ -1,0 +1,3 @@
+create layouts to define the codes once that is common to every page
+
+default.vue> default layout of the page
