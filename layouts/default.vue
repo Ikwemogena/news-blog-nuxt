@@ -24,7 +24,7 @@
                         <NuxtLink to="/">International</NuxtLink>
                     </li>
                     <li>
-                        <NuxtLink to="/about">Africa</NuxtLink>
+                        <NuxtLink to="/africa">Africa</NuxtLink>
                     </li>
                     <li>
                         <NuxtLink to="/asia">Asia</NuxtLink>

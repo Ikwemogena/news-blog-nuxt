@@ -29,8 +29,6 @@
                     </div>
                 </div>
 
-                <!-- middle section of trending  news -->
-                <!-- <div class="max-w-xl flex flex-col border" v-for="(article, index) in news.articles" :key="article.title"> -->
                 <div class="max-w-xl flex flex-col w-[100]">
                     <div >
                         <div >
@@ -39,10 +37,8 @@
                                 <div class="flex items-center">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" alt="" class="profile-picture">
                                     <div>
-                                        <!-- <p>{{ article.author ? article.author:'Author Not available' }}</p> -->
                                         <p v-if="news.articles[4].author">{{ news.articles[4].author.includes(',') ? `${news.articles[4].author}, and others`:news.articles[4].author  }}</p>
                                         <p v-else>Author Not available</p>
-                                        <!-- <p>'David''David''David''David''David''David''David''David'</p> -->
                                         <p><span>Photographer</span></p>
                                     </div>
                                 </div>
@@ -54,9 +50,7 @@
                         </div>
                         <div class="">
                             <h3 class="text-xl font-bold">{{ news.articles[3].title }}</h3>
-                            <!-- <h3 class="text-2xl font-bold">TITLgutvybionu97gsshmovph un oslk vfubonmvoernE</h3>  -->
                             <p class="gray-text">{{ news.articles[3].description }}</p>
-                            <!-- <p >descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription</p> -->
                         </div>
                     </div>
                 </div>
@@ -68,16 +62,13 @@
                         <h3 class="text-xl font-bold">{{ news.articles[4].description }}</h3>
                         
                         <img :src="news.articles[4].urlToImage ? news.articles[4].urlToImage : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'" alt="" class="rounded">
-                        <!-- <p class="gray-text">{{ news.articles[4].urlToImage }}</p> -->
 
                         <div class="flex justify-between py-8 text-sm">
                             <div class="flex items-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" alt="" class="profile-picture">
                                 <div>
-                                    <!-- <p>{{ article.author ? article.author:'Author Not available' }}</p> -->
                                     <p v-if="news.articles[4].author">{{ news.articles[4].author.includes(',') ? `${news.articles[4].author}, and others`:news.articles[4].author  }}</p>
                                     <p v-else>Author Not available</p>
-                                    <!-- <p>'David''David''David''David''David''David''David''David'</p> -->
                                     <p><span>Photographer</span></p>
                                 </div>
                             </div>
@@ -111,10 +102,8 @@
                                 <div class="flex items-center">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" alt="" class="profile-picture">
                                     <div>
-                                        <!-- <p>{{ article.author ? article.author:'Author Not available' }}</p> -->
                                         <p v-if="article.author">{{ article.author.includes(',') ? `${article.author.split(', ')[0]}, and others`:article.author  }}</p>
                                         <p v-else>Author Not available</p>
-                                        <!-- <p>'David''David''David''David''David''David''David''David'</p> -->
                                         <p><span>Photographer</span></p>
                                     </div>
                                 </div>
@@ -124,27 +113,15 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <NuxtLink :to="`/products/${product.id}`"> -->
-                        <!-- <NuxtLink to="/news">
-                            <p class="border rounded p-2 my-4">View News</p>
-                        </NuxtLink> -->
                     </NuxtLink>
                 </div>
             </div>
             
-        </div>
-
-
-        <!-- <div v-for="article in news.articles" :key="article.title">
-            {{ article.title }}
-        </div> -->
-
+        </div> 
     </div>
 </template>
 
 <script setup>
-
-
 
 const formatDate = (value) => {
   const date = new Date(value);
@@ -152,28 +129,19 @@ const formatDate = (value) => {
   return date.toLocaleDateString(undefined, options);
 };
 
-// const { data: news } = await useFetch('/api/news/fetchNews')
-try {
-    const {data: news} = await useFetch('http://localhost:3000/api/news/fetchNews')
-    console.log(news)
-} catch (error) {
-    console.log(error)
-}
-
 const {data: news} = await useFetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=f3798e116eb342b2bae58e7f0cbd9c11`)
-console.log(news.value)
+console.log(news.value.articles[6].title)
 
 // console.log(news.value.articles)
 
 function clickHandler(article) {
     console.log('clicked', article)
 }
+
 </script>
 
 <style scoped>
-/* p{
-    font-size: 20px;
-} */
+
 h1{
     font-size: 2.5rem;
     font-weight: 700;

@@ -82,44 +82,11 @@
 
 <script setup>
 
-// const currentDate = ref(new Date().toLocaleDateString());
-
 const currentDate = ref(new Date());
 
 const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
 const formattedDate = ref(currentDate.value.toLocaleDateString(undefined, options));
 
-
-// const { data } = await useFetch('/api/news/fetchNews')
-
-// const {data:news} = await useFetch('/api/news/fetchNews')
-
-// console.log(news.value)
-
-
-// try {
-//       const response = await useFetch('/api/news/fetchNews');
-//       console.log(response);
-//       if (response.ok) {
-//         // this.news = await response.json();
-//         console.log('come throguh');
-//       } else {
-//         console.error('Failed to fetch news:', response.status);
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
-// const { apiUrl, apiKey } = useRuntimeConfig()
-
-
-
-// const { articles } = await useFetch(`${apiUrl}/v2/top-headlines?country=us&apiKey=${apiKey}`)
-const {data: articles} = await useFetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=f3798e116eb342b2bae58e7f0cbd9c11`)
-console.log(articles.value.articles)
-
-
-// const { data: news  } = await useFetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=f3798e116eb342b2bae58e7f0cbd9c11`);
-// console.log(news.value.articles[0]);
 </script>
 
 <style scoped>

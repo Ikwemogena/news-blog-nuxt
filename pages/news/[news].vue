@@ -1,7 +1,8 @@
 <template>
     <div>
         <div>
-            <NewsDetails :article="articles.articles[0]" />
+            <NewsDetails :article="filteredArticles[0]" />
+            <!-- <h1>{{ filteredArticles[0].title }}</h1> -->
         
         </div>
     </div>
@@ -9,17 +10,23 @@
 
 <script setup>
 
-// const { news } = defineProps(['news'])
 const { news } = useRoute().params
 console.log(news);
 
 
-const {data: articles} = await useFetch(`https://newsapi.org/v2/everything?q=${news}&apiKey=73f1f46d561f4d7182f74512dfc8b56c`)
-console.log(articles.value);
+const {data: articles} = await useFetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=f3798e116eb342b2bae58e7f0cbd9c11`)
 
-// console.log(articles.value.articles);
+// const {data: articles} = await useFetch(`https://newsapi.org/v2/everything?q=${news}&apiKey=73f1f46d561f4d7182f74512dfc8b56c`)
+// console.log(articles.value);
 
-// :articles="articles.value.articles"
+const filteredArticles = ref([]);
+
+// Filter the articles array based on the news parameter
+if (articles.value && articles.value.articles) {
+  filteredArticles.value = articles.value.articles.filter((article) =>
+    article.title.toLowerCase().includes(news.toLowerCase())
+  );
+}
 
 </script>
 
